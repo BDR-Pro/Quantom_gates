@@ -2,7 +2,7 @@ from qiskit import *
 import numpy as np
 
 def deueth_joza(n):
-    qc = QuantumCircuit(n, n)
+    qc = QuantumCircuit(n, n-1)
     a = np.random.randint(1, 2**n)
     oracleType, oracleValue = np.random.randint(2), np.random.randint(2)
     if oracleType == 0:#If the oracleType is "0", the oracle returns oracleValue for all input. 
@@ -24,7 +24,7 @@ def deueth_joza(n):
     for i in range(n):
         qc.h(i)
     qc.barrier()
-    for i in range(n):
+    for i in range(n-1):
         qc.measure(i, i)
     return qc
 
